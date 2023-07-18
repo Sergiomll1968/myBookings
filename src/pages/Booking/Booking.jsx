@@ -25,9 +25,13 @@ const Booking = () => {
   };
 
   const handleCreateBooking = () => {
-    fetch('https://apihairs.onrender.com/booking', {
+    fetch('https://apihairs.onrender.com/booking/date', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'cors', // no-cors, *cors, same-origin)
+      headers: {
+        'Content-Type': 'application/json',
+        //'Authorization': token
+      },
     })
       .then(response => response.json())
       .then(data => {
