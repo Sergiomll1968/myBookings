@@ -1,12 +1,15 @@
-import './Profile.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Profile() {
-  
+const Profile = () => {
   return (
-    <>
-      <h1>Página - Profile -</h1>
-    </>
+    <div>
+      <h1>Profile</h1>
+      <Link to="/booking">Citas</Link>
+      <br></br>
+      <Link to="/awards">Premios</Link>
+    </div>
   );
-}
+};
 
 export default Profile;
