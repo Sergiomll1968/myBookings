@@ -36,3 +36,13 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
+
+.containerRegister {
+  width: 100%;
+}
+
+.labelRegister {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
