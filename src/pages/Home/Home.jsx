@@ -21,12 +21,11 @@ function Home() {
     setUser({...user, password: e.target.value});
   }
 
-  async function login() {
+  async function register() {
     setRegistering(true);
 
     try {
       const response = await fetch(`https://apihairs-mbe1.onrender.com/register`, {
-      // const response = await fetch(`http://localhost:3001/register`, {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -63,7 +62,7 @@ function Home() {
       <label htmlFor='password'>Password:&nbsp;</label>
       <input name='password' type='password' onChange={(e) => changePassword(e)}/>
       &nbsp;&nbsp;
-      <input name='login' type='button' value='Login' onClick={login} />
+      <input name='register' type='button' value='Register' onClick={register} />
       {error && <h2> {JSON.stringify(error.statusText)} </h2>}
       {token && <h2> {JSON.stringify(token)} </h2>}
     </>
