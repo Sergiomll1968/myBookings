@@ -12,7 +12,7 @@ function Home() {
           <div className='row'>
             <LayerBlack className='col-10 col-md-11 col-lg-12'>
               <Logo><img src='/public/Logo.png' alt='Logo' /></Logo>
-              <div id='inputs'>
+              <div className='inputs'>
                 <div className='label'>Username</div>
                 <Input className='col-10'></Input>
                 <br></br>
