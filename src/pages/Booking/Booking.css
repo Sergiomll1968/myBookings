@@ -1,0 +1,14 @@
+/* Booking.css */
+body {
+  background-color: #90E0EF; /* Azul Turquesa */
+  max-width: 1440px;
+  min-height: 1024px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Ajustes para que el contenido quede centrado */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}

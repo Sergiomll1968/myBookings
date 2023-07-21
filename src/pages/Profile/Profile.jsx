@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Profile = () => {
+function Profile() {
   return (
     <div>
       <h1>Profile</h1>
@@ -10,6 +9,6 @@ const Profile = () => {
       <Link to="/awards">Premios</Link>
     </div>
   );
-};
+}
 
 export default Profile;

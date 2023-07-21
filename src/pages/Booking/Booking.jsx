@@ -1,13 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import './Booking.css';
+import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button } from 'react-bootstrap';
 
-const Booking = () => {
+function Booking() {
+  // Este fetch es temporal para logearse y probar booking. Luego borrar
+  const tempuser = { username: "Sergio A.G", password: "4444", id: "64b80eb78a82fe493962572e" };
+
+  async function login() {
+    await fetch('https://apihairs-mbe1.onrender.com/login', {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(tempuser),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.json())
+      .then(data => {
+        setToken(data);
+      })
+      .catch(error => {
+        console.error('Error fetching services:', error);
+      });
+  }
+
   const [services, setServices] = useState([]);
-  const [selectedService, setSelectedService] = useState('');
+  const [token, setToken] = useState([]);
   const [dateTime, setDateTime] = useState('');
+  const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
-    fetch('https://apihairs.onrender.com/services/all')
+    fetch('https://apihairs-mbe1.onrender.com/services/all')
       .then(response => response.json())
       .then(data => {
         setServices(data);
@@ -15,6 +37,7 @@ const Booking = () => {
       .catch(error => {
         console.error('Error fetching services:', error);
       });
+    login();
   }, []);
 
   const handleServiceChange = (e) => {
@@ -25,13 +48,22 @@ const Booking = () => {
     setDateTime(e.target.value);
   };
 
-  const handleCreateBooking = () => {
-    fetch('https://apihairs.onrender.com/booking/date', {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin)
+  const handleCreateBooking = async () => {
+    let data = {
+      date: dateTime,
+      state: 'pending',
+      deleted: false,
+      userId: tempuser.id,
+      serviceId: selectedService,
+    };
+
+    await fetch('https://apihairs-mbe1.onrender.com/bookings/date', {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
-        //'Authorization': token
+        'Authorization': token,
       },
     })
       .then(response => response.json())
@@ -44,26 +76,26 @@ const Booking = () => {
   };
 
   return (
-    <div>
+    <div style={{ backgroundColor: '#90E0EF', maxWidth: '1440px', minHeight: '1024px', margin: '0 auto', padding: '20px' }}>
       <h1>Booking</h1>
-      <label>
-        Tipo de servicio:
-        <select value={selectedService} onChange={handleServiceChange}>
-          <option value="">Selecciona un servicio</option>
-          {services.map(service => (
-            <option key={service.id} value={service.id}>{service.name}</option>
-          ))}
-        </select>
-      </label>
-      <br />
-      <label>
-        Día y Hora:
-        <input type="datetime-local" value={dateTime} onChange={handleDateTimeChange} />
-      </label>
-      <br />
-      <button onClick={handleCreateBooking}>Crear cita</button>
+      <Form>
+        <Form.Group>
+          <Form.Label>Tipo de servicio:</Form.Label>
+          <Form.Control as="select" value={selectedService} onChange={handleServiceChange}>
+            {services.map(service => (
+              <option key={service.id} value={service.id}>{service.name}</option>
+            ))}
+          </Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Día y Hora:</Form.Label>
+          <Form.Control type="datetime-local" value={dateTime} onChange={handleDateTimeChange} />
+        </Form.Group>
+        <Button onClick={handleCreateBooking}>Crear cita</Button>
+      </Form>
     </div>
   );
-};
+}
 
 export default Booking;
+
