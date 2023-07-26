@@ -58,7 +58,7 @@ function Home() {
         <div className='containerDiv'>
           <div className='row'>
             <LayerBlack className='col-10 col-lg-9'>
-              <Logo><img src='/public/Logo.png' alt='Logo' /></Logo>
+              <Logo><img src='/Logo.png' alt='Logo' /></Logo>
               <div className='inputs'>
                 <div className='label'>Username</div>
                 <Input className='col-10 col-lg-9' type='text' onChange={(e) => changeUsername(e)}></Input>
