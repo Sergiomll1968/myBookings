@@ -11,25 +11,9 @@ import './Booking.css';
 function Booking() {
   const tempuser = { username: "Sergio A.G", password: "4444", id: "64b80eb78a82fe493962572e" };
 
-  async function login() {
-    await fetch('https://apihairs-mbe1.onrender.com/login', {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify(tempuser),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(response => response.json())
-      .then(data => {
-        setToken(data);
-      })
-      .catch(error => {
-        console.error('Error fetching services:', error);
-      });
-  }
+  
 
   const [services, setServices] = useState([]);
-  const [token, setToken] = useState([]);
   const [dateTime, setDateTime] = useState('');
   const [selectedService, setSelectedService] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,7 +27,6 @@ function Booking() {
       .catch(error => {
         console.error('Error fetching services:', error);
       });
-    login();
   }, []);
 
   const handleServiceChange = (e) => {
@@ -62,6 +45,8 @@ function Booking() {
       userId: tempuser.id,
       serviceId: selectedService,
     };
+
+    alert(sessionStorage.getItem('token'))
 
     await fetch('https://apihairs-mbe1.onrender.com/bookings/date', {
       method: 'POST',

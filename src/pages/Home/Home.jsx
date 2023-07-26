@@ -36,7 +36,7 @@ function Home() {
   }
 
   async function onClickHandler(e) {
-    getData({
+    await getData({
       route: `https://apihairs-mbe1.onrender.com/${e.target.value}`,
       // route: `http://localhost:3001/${e.target.value}`,
       method: 'POST',
@@ -48,7 +48,12 @@ function Home() {
         'Access-Control-Allow-Credentials': true,
       },
       body: JSON.stringify({ 'username': user.username, 'mail': user.mail, 'password': user.password }),
-    });
+    }).then(setToken());
+  }
+  
+  function setToken() { 
+    
+    sessionStorage.setItem('token',user.token)
   }
 
   return (
