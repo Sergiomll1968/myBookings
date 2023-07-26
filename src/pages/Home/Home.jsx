@@ -69,9 +69,7 @@ function Home() {
                 <Button type='login' value='login' onClick={(e) => onClickHandler(e)}>Log In</Button>
                 <br></br>
                 <br></br>
-                <br></br>
                 <div className='label'>Don&apos;t have an account?</div>
-                <br></br>
                 <Button width='200px' onClick={() => setShowRegister(true)}>Create new account</Button>
               </div>
             </LayerBlack>
