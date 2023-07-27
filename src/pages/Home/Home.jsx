@@ -53,7 +53,7 @@ function Home() {
   
   function setToken() { 
     
-    sessionStorage.setItem('token',user.token)
+    sessionStorage.setItem('user',JSON.stringify(user))
   }
 
   return (

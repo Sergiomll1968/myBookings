@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+
+// import CalendarModal from './CalendarModal';
+import CalendarModal from '../../components/Modal/CalendarModal.jsx'; // Importamos el componente CalendarModal
 
 import Logo from '../../components/Logo/Logo.js';
-// import Button from '../../components/Button/Button.js';
+import Button from '../../components/Button/Button.js';
 import LayerBlack from '../../components/LayerBlack/LayerBlack.js';
+import './Booking.css';
 
 function Booking() {
-  const user = JSON.parse(sessionStorage.getItem('user'));
-  console.log(JSON.stringify(user));
+  const tempuser = { username: "Sergio A.G", password: "4444", id: "64b80eb78a82fe493962572e" };
+
+  
 
   const [services, setServices] = useState([]);
   const [dateTime, setDateTime] = useState('');
   const [selectedService, setSelectedService] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch('https://apihairs-mbe1.onrender.com/services/all')
@@ -38,9 +42,11 @@ function Booking() {
       date: dateTime,
       state: 'pending',
       deleted: false,
-      userId: user.id,
+      userId: tempuser.id,
       serviceId: selectedService,
     };
+
+    alert(sessionStorage.getItem('token'))
 
     await fetch('https://apihairs-mbe1.onrender.com/bookings/date', {
       method: 'POST',
@@ -48,7 +54,7 @@ function Booking() {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': user.token,
+        'Authorization': token,
       },
     })
       .then(response => response.json())
@@ -61,7 +67,11 @@ function Booking() {
   };
 
   const openModal = () => {
-    // Implement openModal function here if it's missing from the previous code.
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -110,6 +120,8 @@ function Booking() {
           <br></br>
         </div>
       </div>
+
+      {isModalOpen && <CalendarModal onClose={closeModal} />}
     </>
   );
 }
