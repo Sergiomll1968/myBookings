@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router-dom';
 import Home from './pages/Home/Home.jsx';
+import Confirm from './pages/Confirm/Confirm.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 import Booking from './pages/Booking/Booking.jsx';
 
@@ -17,6 +18,10 @@ function AppRouter() {
       {
         element: <Booking />,
         path: '/booking',
+      },
+      {
+        element: <Confirm />,
+        path: '/confirm',
       }
     ]
   );

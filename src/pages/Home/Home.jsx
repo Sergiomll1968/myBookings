@@ -58,7 +58,7 @@ function Home() {
         <div className='containerDiv'>
           <div className='row'>
             <LayerBlack className='col-10 col-lg-9'>
-              <Logo><img src='/public/Logo.png' alt='Logo' /></Logo>
+              <Logo><img src='/Logo.png' alt='Logo' /></Logo>
               <div className='inputs'>
                 <div className='label'>Username</div>
                 <Input className='col-10 col-lg-9' type='text' onChange={(e) => changeUsername(e)}></Input>
@@ -69,9 +69,7 @@ function Home() {
                 <Button type='login' value='login' onClick={(e) => onClickHandler(e)}>Log In</Button>
                 <br></br>
                 <br></br>
-                <br></br>
                 <div className='label'>Don&apos;t have an account?</div>
-                <br></br>
                 <Button width='200px' onClick={() => setShowRegister(true)}>Create new account</Button>
               </div>
             </LayerBlack>
