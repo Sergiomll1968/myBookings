@@ -10,7 +10,7 @@ export function UserProvider({ children }) {
     password: '',
     token: ''
   });
-  
+
   function setUserProfile(user) {
     setUser(user);
   }
