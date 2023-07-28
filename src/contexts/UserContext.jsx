@@ -5,9 +5,10 @@ export const UserContext = createContext();
 export function UserProvider({ children }) {
 
   const [user, setUser] = useState({
+    _id: '',
     username:'',
     mail: '',
-    password: '',
+    points: '',
     token: ''
   });
   
