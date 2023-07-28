@@ -11,7 +11,7 @@ export function UserProvider({ children }) {
     points: '',
     token: ''
   });
-  
+
   function setUserProfile(user) {
     setUser(user);
   }
