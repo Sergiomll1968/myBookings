@@ -18,10 +18,22 @@ function Home() {
   const { getData, data, error, loading } = useGetData();
 
   const [showRegister, setShowRegister] = useState(false);
+  const [register, setRegister] = useState(false);
+  const [button, setButton] = useState();
 
   useEffect(() => {
     setUserProfile({ ...user, token: data?.token });
   }, [data]);
+
+  useEffect(() => {
+    if (!register) {
+      return;
+    }
+
+    setTimeout(() => {
+      setRegister(false);
+    }, 5000);
+  }, [register]);
 
   function changeUsername(e) {
     setUserProfile({ ...user, username: e.target.value });
@@ -33,6 +45,7 @@ function Home() {
 
   function changePassword(e) {
     setUserProfile({ ...user, password: e.target.value });
+    setButton(e.target.value);
   }
 
   async function onClickHandler(e) {
@@ -58,7 +71,6 @@ function Home() {
 
   return (
     <>
-      {loading && <h1>Loading</h1>}
       <div className='home'>
         <div className='containerDiv'>
           <div className='row'>
@@ -85,8 +97,8 @@ function Home() {
                     <div><Button height='30px' width='30px' $borderRadius='5px' onClick={() => setShowRegister(false)}>X</Button></div>
                     <div className='row'>
                       <div className='inputs'>
-                        <div className='labelRegister' style={{ fontSize: '45px' }}>Registrarte</div>
-                        <div className='labelRegister'>Es rápido y fácil</div>
+                        <div className='labelRegister' style={{ fontSize: '45px' }}>Sign Up</div>
+                        <div className='labelRegister'>It’s quick and easy</div>
                         <br></br>
                         <br></br>
                         <div className='labelRegister'>Username</div>
@@ -99,6 +111,22 @@ function Home() {
                         <Input className='col-10 col-md-9 col-lg-8' type='email' onChange={(e) => changeEmail(e)}></Input>
                         <br></br>
                         <Button value='register' onClick={(e) => onClickHandler(e)}>Register</Button>
+                      </div>
+                    </div>
+                  </div>
+                </Panel>
+              </Modal>
+            }
+            {register &&
+              <Modal>
+                <Panel className='col-12 col-md-10 col-lg-4'>
+                  <div className='containerRegister'>
+                    <div className='row'>
+                      <div className='inputs'>
+                        { }
+                        {button === 'login' || data.message ?
+                          <div className='labelRegister'>{data.message}</div> :
+                          <div className='labelRegister'>Please, we&apos;ve sent you an email to confirm your account</div>}
                       </div>
                     </div>
                   </div>
