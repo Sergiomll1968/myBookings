@@ -51,7 +51,7 @@ function Home() {
     let userDataAndToken;
     try {
       userDataAndToken = await getData({
-        route: `https://apihairs-mbe1.onrender.com/${e.target.value}`,
+        route: `https://apihairs-7342.onrender.com/${e.target.value}`,
         // route: `http://localhost:3001/${e.target.value}`,
         method: 'POST',
         mode: 'cors',
