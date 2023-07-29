@@ -5,21 +5,12 @@ body {
 
 .home {
   background-color: #90e0ef33;
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   background-image: url(/background.png);
 }
-
-/* .overlap-group {
-  background-color: #0000009e;
-  height: 150px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-} */
 
 .logo {
   height: 132px;
@@ -28,14 +19,6 @@ body {
   position: absolute;
   top: 11px;
   width: 190px;
-}
-
-.button {
-  border: unset !important;
-  border-color: unset !important;
-  left: 1241px !important;
-  position: absolute !important;
-  top: 44px !important;
 }
 
 .username {
