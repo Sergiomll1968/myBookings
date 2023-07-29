@@ -79,7 +79,7 @@ function Home() {
       <div className='home'>
         <br />
         <div className='containerDiv'>
-          <div className='row'>
+          <div>
             <LayerBlack className='col-10 col-lg-9'>
               <Logo><img src='/Logo.png' alt='Logo' /></Logo>
               <div className='inputs'>
@@ -94,6 +94,7 @@ function Home() {
                 <br></br>
                 <div className='label'>Don&apos;t have an account?</div>
                 <Button width='200px' onClick={() => setShowRegister(true)}>Create new account</Button>
+                <br></br>
               </div>
             </LayerBlack>
             {showRegister &&
