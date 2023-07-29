@@ -4,7 +4,7 @@ function Booking() {
   
   return (
     <>
-      <h1>Página - booking -</h1>
+      
     </>
   );
 }
