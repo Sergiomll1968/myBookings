@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
+import {UserContext} from '../../contexts/UserContext.jsx';
 
 function Booking() {
   // Este fetch es temporal para logearse y probar booking. Luego borrar
@@ -23,6 +24,7 @@ function Booking() {
   //     });
   // }
 
+  const { user, setUserProfile } = useContext(UserContext);
   const [services, setServices] = useState([]);
   // const [token, setToken] = useState([]);
   const [dateTime, setDateTime] = useState('');
@@ -53,9 +55,11 @@ function Booking() {
       date: dateTime,
       state: 'pending',
       deleted: false,
-      userId: user.id,
+      userId: user._id,
       serviceId: selectedService,
     };
+  
+    console.log(data);
 
     await fetch(`https://apihairs-mbe1.onrender.com/bookings/date`, {
       method: 'POST',
@@ -63,7 +67,7 @@ function Booking() {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token,
+        'Authorization': user.token,
       },
     })
       .then(response => response.json())

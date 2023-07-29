@@ -1,3 +1,6 @@
+import Logo from '../../components/Logo/Logo.js';
+import Button from '../../components/Button/Button.js';
+import LayerBlack from '../../components/LayerBlack/LayerBlack.js';
 import './Profile.css';
 
 function Profile() {
