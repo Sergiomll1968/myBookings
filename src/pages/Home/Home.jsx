@@ -45,7 +45,6 @@ function Home() {
 
   function changePassword(e) {
     setUserProfile({ ...user, password: e.target.value });
-    setButton(e.target.value);
   }
 
   async function onClickHandler(e) {
@@ -78,6 +77,7 @@ function Home() {
   return (
     <>
       <div className='home'>
+        <br />
         <div className='containerDiv'>
           <div className='row'>
             <LayerBlack className='col-10 col-lg-9'>
