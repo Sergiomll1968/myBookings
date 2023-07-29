@@ -1,16 +1,16 @@
-html,
+/* html,
 body {
   height: 100%;
-}
+} */
 
-.home {
+/* .home {
   background-color: #90e0ef33;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   background-image: url(/background.png);
-}
+} */
 
 /* .overlap-group {
   background-color: #0000009e;
