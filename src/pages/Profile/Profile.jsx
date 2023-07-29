@@ -9,7 +9,7 @@ function Profile() {
       <div className='home'>
          <LayerBlack height='188px' borderRadius='0px' style={{width:'100%'}} className="col-12 col-md-10 d-flex justify-content-center p-3">
           <Logo>
-            <img className='logo' alt="Logo" src='/Logo.png' />
+            <img className='logoProfile' alt="Logo" src='/Logo.png' />
           </Logo>
           <Button className='button'>Log Out</Button>
         </LayerBlack>
@@ -55,6 +55,7 @@ function Profile() {
                     12:00
                   </div>
                 </LayerBlack>
+                
                 <LayerBlack height='100px' className="col-3 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
                   <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }}/>
                   <div className='martes'>

@@ -1,18 +1,4 @@
-/* html,
-body {
-  height: 100%;
-} */
-
-/* .home {
-  background-color: #90e0ef33;
-  display: block;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  background-image: url(/background.png);
-} */
-
-.logo {
+.logoProfile {
   height: 132px;
   left: 19px;
   object-fit: cover;
