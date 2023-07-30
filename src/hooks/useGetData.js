@@ -14,8 +14,10 @@ export function useGetData() {
         headers,
         body,
       });
+      
       if (response.ok) {
         const responseAsJson = await response.json();
+        
         setData(responseAsJson);
       } else {
         setError(new Error(`${response.status}: ${response.statusText}`));
