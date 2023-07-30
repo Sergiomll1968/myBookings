@@ -14,6 +14,9 @@ export function UserProvider({ children }) {
 
   function setUserProfile(user) {
     setUser(user);
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
   }
 
   return (

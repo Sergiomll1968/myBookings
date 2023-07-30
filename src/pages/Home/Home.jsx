@@ -16,7 +16,7 @@ import './Home.css';
 function Home() {
   const { user, setUserProfile } = useContext(UserContext);
   const { env } = useContext(EnvContext);
- 
+
   const { getData, data, error, loading } = useGetData();
 
   const [showRegister, setShowRegister] = useState(false);
@@ -36,6 +36,7 @@ function Home() {
       setRegister(false);
     }, 5000);
   }, [register]);
+
 
   function changeUsername(e) {
     setUserProfile({ ...user, username: e.target.value });
