@@ -7,7 +7,7 @@ function Profile() {
   return (
     <>
       <div className='home'>
-         <LayerBlack height='188px' borderRadius='0px' style={{width:'100%'}} className="col-12 col-md-10 d-flex justify-content-center p-3">
+        <LayerBlack height='188px' borderRadius='0px' style={{ width: '100%' }} className="col-12 col-md-10 d-flex justify-content-center p-3">
           <Logo>
             <img className='logoProfile' alt="Logo" src='/Logo.png' />
           </Logo>
@@ -34,9 +34,9 @@ function Profile() {
                 <h2 className='username'> Su próxima cita es: 11/08/2023 a las 10:00h </h2>
                 <h2 className='username'> Historial: </h2>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                <LayerBlack height='100px' className="col-3 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
-                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }}/>
+              <div className='row' style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Martes
                     <br />
@@ -45,8 +45,8 @@ function Profile() {
                     11:00
                   </div>
                 </LayerBlack>
-                <LayerBlack height='100px' className="col-3 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
-                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }}/>
+                <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Miercoles
                     <br />
@@ -55,9 +55,9 @@ function Profile() {
                     12:00
                   </div>
                 </LayerBlack>
-                
-                <LayerBlack height='100px' className="col-3 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
-                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }}/>
+
+                <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+                  <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Viernes
                     <br />
@@ -66,9 +66,11 @@ function Profile() {
                     09:00
                   </div>
                 </LayerBlack>
+                <div className="col-6 col-md-3">
+                  <img src="/+citas.png" alt="Image" className="grid-image" />
+                </div>
               </div>
             </div>
-            <img src="/+citas.png" alt="Image" className="grid-image" />
           </LayerBlack>
           <br></br>
           <LayerBlack height='188px' className="col-12 col-md-10 d-flex justify-content-center p-3">
