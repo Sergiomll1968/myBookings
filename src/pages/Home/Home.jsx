@@ -8,13 +8,15 @@ import Modal from '../../components/Modal/Modal.js';
 import Panel from '../../components/Panel/Panel.js';
 
 import { UserContext } from '../../contexts/UserContext.jsx';
+import { EnvContext } from '../../contexts/EnvContext.jsx';
 import { useGetData } from '../../hooks/useGetData.js';
 
 import './Home.css';
 
 function Home() {
   const { user, setUserProfile } = useContext(UserContext);
-
+  const { env } = useContext(EnvContext);
+ 
   const { getData, data, error, loading } = useGetData();
 
   const [showRegister, setShowRegister] = useState(false);
@@ -45,35 +47,41 @@ function Home() {
 
   function changePassword(e) {
     setUserProfile({ ...user, password: e.target.value });
-    setButton(e.target.value);
   }
 
   async function onClickHandler(e) {
-    await getData({
-      route: `https://apihairs-mbe1.onrender.com/${e.target.value}`,
-      // route: `http://localhost:3001/${e.target.value}`,
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Credentials': true,
-      },
-      body: JSON.stringify({ 'username': user.username, 'mail': user.mail, 'password': user.password }),
-    }).then(setToken());
-  }
-  
-  function setToken() { 
-    
-    sessionStorage.setItem('user',JSON.stringify(user))
+    let userDataAndToken;
+    try {
+      userDataAndToken = await getData({
+        // route: `https://apihairs-7342.onrender.com/${e.target.value}`,
+        route: `${env.HOST}${e.target.value}`,
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
+        body: JSON.stringify({ 'username': user.username, 'mail': user.mail, 'password': user.password }),
+      });
+    } catch
+    (error) {
+      return;
+    }
+    setUserProfile({ ...user, userDataAndToken });
+    setButton(e.target.value);
+    if (!userDataAndToken) {
+      setRegister(true);
+    }
   }
 
   return (
     <>
       <div className='home'>
+        <br />
         <div className='containerDiv'>
-          <div className='row'>
+          <div>
             <LayerBlack className='col-10 col-lg-9'>
               <Logo><img src='/Logo.png' alt='Logo' /></Logo>
               <div className='inputs'>
@@ -88,6 +96,7 @@ function Home() {
                 <br></br>
                 <div className='label'>Don&apos;t have an account?</div>
                 <Button width='200px' onClick={() => setShowRegister(true)}>Create new account</Button>
+                <br></br>
               </div>
             </LayerBlack>
             {showRegister &&
@@ -140,6 +149,7 @@ function Home() {
       </div>
       {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
       {data && <h2> data --- {JSON.stringify(data)} </h2>}
+      {loading && <h2> loading...</h2>}
     </>
   );
 

@@ -1,15 +1,70 @@
+/* html,
+body {
+  height: 100%;
+} */
 
-.historial .martes {
-  color: #ffffff;
-  font-family: "Inter-Bold", Helvetica;
-  font-size: 20px;
-  font-weight: 700;
-  height: 159px;
+/* .home {
+  background-color: #90e0ef33;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-image: url(/background.png);
+} */
+
+/* .overlap-group {
+  background-color: #0000009e;
+  height: 150px;
   left: 0;
-  letter-spacing: 0;
-  line-height: normal;
   position: absolute;
-  text-align: center;
-  top: 5px;
-  width: 388px;
+  top: 0;
+  width: 100%;
+} */
+
+.logo {
+  height: 132px;
+  left: 19px;
+  object-fit: cover;
+  position: absolute;
+  top: 11px;
+  width: 190px;
+}
+
+.button {
+  border: unset !important;
+  border-color: unset !important;
+  left: 1241px !important;
+  position: absolute !important;
+  top: 44px !important;
+}
+
+.username {
+  font-size: 21px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.grid-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.reloj {
+  height: 200px; 
+  width: 200px;
+  display: block;
+  margin: -50px;
+}
+
+.martes {
+  color: #ffffff; 
+  font-family: "Inter-Bold", Helvetica; 
+  font-size: 20px; 
+  font-weight: 700; 
+  text-align: end; 
+  line-height: 1.5; 
+  position: absolute; 
+  top: 50%; 
+  left: 70%; 
+  transform: translate(-50%, -50%);
 }
