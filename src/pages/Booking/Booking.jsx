@@ -85,7 +85,7 @@ function Booking() {
       <Form>
         <Form.Group>
           <Form.Label>Tipo de servicio:</Form.Label>
-          <Form.Control as="select" value={selectedService} onChange={handleServiceChange}>
+          <Form.Control as="select" value={selectedService} onChange={(e) => handleServiceChange(e)}>
             {services.map(service => (
               <option key={service.id} value={service.id}>{service.name}</option>
             ))}
