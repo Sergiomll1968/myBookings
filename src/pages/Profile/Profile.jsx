@@ -34,8 +34,10 @@ function Profile() {
                 <h2 className='username'> Su próxima cita es: 11/08/2023 a las 10:00h </h2>
                 <h2 className='username'> Historial: </h2>
               </div>
+
               <div className='row' style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                 <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+
                   <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Martes
@@ -45,7 +47,9 @@ function Profile() {
                     11:00
                   </div>
                 </LayerBlack>
+
                 <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+
                   <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Miercoles
@@ -56,7 +60,9 @@ function Profile() {
                   </div>
                 </LayerBlack>
 
+
                 <LayerBlack height='100px' className="col-6 col-md-3 d-flex justify-content-center" style={{ position: 'relative' }}>
+
                   <img className="reloj" alt="Reloj" src="citas.png" style={{ marginRight: '10px' }} />
                   <div className='martes'>
                     Viernes
@@ -66,12 +72,14 @@ function Profile() {
                     09:00
                   </div>
                 </LayerBlack>
+
                 <div className="col-6 col-md-3">
                   <img src="/+citas.png" alt="Image" className="grid-image" />
                 </div>
               </div>
             </div>
           </LayerBlack>
+
           <br></br>
           <LayerBlack height='188px' className="col-12 col-md-10 d-flex justify-content-center p-3">
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -95,8 +103,8 @@ function Profile() {
             </div>
           </LayerBlack>
           <br></br>
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 }

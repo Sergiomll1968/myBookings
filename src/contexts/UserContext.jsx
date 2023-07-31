@@ -13,7 +13,7 @@ export function UserProvider({ children }) {
   });
 
   function setUserProfile(user) {
-    setUser(user);
+    setUser({...user});
   }
 
   return (
