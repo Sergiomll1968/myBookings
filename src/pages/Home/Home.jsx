@@ -156,10 +156,10 @@ function Home() {
         <br></br>
         <br></br>
       </div>
-      {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
+      {/* {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
       {data && <h2> data --- {JSON.stringify(data)} </h2>}
       {user && <h2> user --- {JSON.stringify(user)} </h2>}
-      {loading && <h2> loading...</h2>}
+      {loading && <h2> loading...</h2>} */}
     </>
   );
 
