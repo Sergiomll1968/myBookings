@@ -26,7 +26,10 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setUserProfile({ ...user, token: data?.token });
+    setUserProfile({ ...user, ...data });
+    if (data) {
+      navigate('/profile');
+    }
   }, [data]);
 
   useEffect(() => {
@@ -53,9 +56,8 @@ function Home() {
   }
 
   async function onClickHandler(e) {
-    let userDataAndToken;
     try {
-      userDataAndToken = await getData({
+      await getData({
         // route: `https://apihairs-7342.onrender.com/${e.target.value}`,
         route: `${env.HOST}${e.target.value}`,
         method: 'POST',
@@ -72,18 +74,15 @@ function Home() {
     (error) {
       return;
     }
-    setUserProfile({ ...user, userDataAndToken });
+
+    // setUserProfile({ ...user, data });
+
     setButton(e.target.value);
-    if (!userDataAndToken) {
+    if (!data) {
       setRegister(true);
     }
 
-    console.log('user :>> ', user);
-
-    if (user) {
-      navigate('/profile');
-    }
-
+    return;
   }
 
   return (
@@ -159,6 +158,7 @@ function Home() {
       </div>
       {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
       {data && <h2> data --- {JSON.stringify(data)} </h2>}
+      {user && <h2> user --- {JSON.stringify(user)} </h2>}
       {loading && <h2> loading...</h2>}
     </>
   );
