@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../../components/Logo/Logo.js';
 import Input from '../../components/Input/Input.js';
@@ -22,6 +23,7 @@ function Home() {
   const [showRegister, setShowRegister] = useState(false);
   const [register, setRegister] = useState(false);
   const [button, setButton] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUserProfile({ ...user, token: data?.token });
@@ -75,6 +77,13 @@ function Home() {
     if (!userDataAndToken) {
       setRegister(true);
     }
+
+    console.log('user :>> ', user);
+
+    if (user) {
+      navigate('/profile');
+    }
+
   }
 
   return (

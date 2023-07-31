@@ -1,12 +1,16 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 
 import Logo from '../../components/Logo/Logo.js';
 import Button from '../../components/Button/Button.js';
 import LayerBlack from '../../components/LayerBlack/LayerBlack.js';
 
-import { UserContext } from '../../contexts/UserContext.jsx';
-import { EnvContext } from '../../contexts/EnvContext.jsx';
-import { useGetData } from '../../hooks/useGetData.js';
+// import { UserContext } from '../../contexts/UserContext.jsx';
+// import { EnvContext } from '../../contexts/EnvContext.jsx';
+// import { useGetData } from '../../hooks/useGetData.js';
+
+// const { user, setUserProfile } = useContext(UserContext);
+
+// console.log('user :>> ', user);
 
 import './Profile.css';
 
