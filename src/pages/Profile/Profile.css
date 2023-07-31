@@ -14,8 +14,8 @@
 }
 
 .grid-image {
-  max-width: 75%;
-  max-height: 75%;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .reloj {
