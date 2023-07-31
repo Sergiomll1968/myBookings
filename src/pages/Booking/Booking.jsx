@@ -1,28 +1,11 @@
 import { useState, useEffect, useContext } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
-import {UserContext} from '../../contexts/UserContext.jsx';
+import { UserContext } from '../../contexts/UserContext.jsx';
+import Select from '../../components/Select/Select.jsx';
+
+
 
 function Booking() {
-  // Este fetch es temporal para logearse y probar booking. Luego borrar
-  // const tempuser = { username: "Sergio A.G", password: "4444", id: "64b80eb78a82fe493962572e" };
-
-  // async function login() {
-  //   await fetch('https://apihairs-mbe1.onrender.com/login', {
-  //     method: 'POST',
-  //     mode: 'cors',
-  //     body: JSON.stringify(tempuser),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   }).then(response => response.json())
-  //     .then(data => {
-  //       setToken(data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching services:', error);
-  //     });
-  // }
 
   const { user, setUserProfile } = useContext(UserContext);
   const [services, setServices] = useState([]);
@@ -31,9 +14,10 @@ function Booking() {
   const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
-    fetch('https://apihairs-mbe1.onrender.com/services/all')
+    fetch('https://apihairs-7342.onrender.com/services/all')
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         setServices(data);
       })
       .catch(error => {
@@ -58,7 +42,7 @@ function Booking() {
       userId: user._id,
       serviceId: selectedService,
     };
-  
+
     console.log(data);
 
     await fetch(`https://apihairs-mbe1.onrender.com/bookings/date`, {
@@ -85,11 +69,19 @@ function Booking() {
       <Form>
         <Form.Group>
           <Form.Label>Tipo de servicio:</Form.Label>
-          <Form.Control as="select" value={selectedService} onChange={(e) => handleServiceChange(e)}>
+          <Select data={services.map((serv) => {
+            return { key: serv._id, value: serv.name }
+          })}
+            // defaultMessage='prueba01'
+            onChangeHandler={(serv) => {
+              
+
+            }}></Select>
+          {/* <Form.Control as="select" value={selectedService} onChange={(e) => handleServiceChange(e)}>
             {services.map(service => (
               <option key={service.id} value={service.id}>{service.name}</option>
             ))}
-          </Form.Control>
+          </Form.Control> */}
         </Form.Group>
         <Form.Group>
           <Form.Label>Día y Hora:</Form.Label>
