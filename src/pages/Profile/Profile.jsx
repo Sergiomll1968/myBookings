@@ -7,7 +7,7 @@ function Profile() {
   return (
     <>
       <div className='home'>
-        <LayerBlack height='188px' borderRadius='0px' style={{ width: '100%' }} className="col-12 col-md-10 d-flex justify-content-center p-3">
+        <LayerBlack height='188px' borderRadius='0px' style={{ width: '100%' }} className="col-12 col-md-12 d-flex justify-content-center p-3">
           <Logo>
             <img className='logoProfile' alt="Logo" src='/Logo.png' />
           </Logo>
@@ -28,7 +28,7 @@ function Profile() {
             </div>
           </LayerBlack>
           <br></br>
-          <LayerBlack height='188px' className="col-12 col-md-10 d-flex justify-content-space-around p-3">
+          <LayerBlack className="col-12 col-md-10 d-flex justify-content-space-around p-3">
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
               <div>
                 <h2 className='username'> Su próxima cita es: 11/08/2023 a las 10:00h </h2>
@@ -81,7 +81,7 @@ function Profile() {
           </LayerBlack>
 
           <br></br>
-          <LayerBlack height='188px' className="col-12 col-md-10 d-flex justify-content-center p-3">
+          <LayerBlack className="col-12 col-md-10 d-flex justify-content-center p-3">
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center', flexWrap: 'wrap' }}>
               <img src="/verpremios.png" alt="Image" className="grid-image" />
               <LayerBlack height='100px' className="col-3 col-md-3 d-flex align-items-center" style={{ position: 'relative' }}>
