@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../../components/Logo/Logo.js';
 import Input from '../../components/Input/Input.js';
@@ -16,21 +17,20 @@ import './Home.css';
 function Home() {
   const { user, setUserProfile } = useContext(UserContext);
   const { env } = useContext(EnvContext);
- 
+
   const { getData, data, error, loading } = useGetData();
 
   const [showRegister, setShowRegister] = useState(false);
   const [register, setRegister] = useState(false);
   const [button, setButton] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUserProfile({ ...user, ...data });
-    return;
+    if (data) {
+      navigate('/profile');
+    }
   }, [data]);
-
-  useEffect(() => {
-    return;
-  }, [user]);
 
   useEffect(() => {
     if (!register) {
@@ -41,6 +41,7 @@ function Home() {
       setRegister(false);
     }, 5000);
   }, [register]);
+
 
   function changeUsername(e) {
     setUserProfile({ ...user, username: e.target.value });
