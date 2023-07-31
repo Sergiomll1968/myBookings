@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledSelect = styled.select`
-  background-color: transparent;
+  background-color: ${ props => props?.$colors?.background || 'var(--white)' };
   border: 0;
-  color: var(--secondaryColor);
+  color: ${ props => props?.$colors?.secondary || 'var(--black)' };
   cursor: pointer;
 
   &:focus-visible {
@@ -11,32 +11,38 @@ const StyledSelect = styled.select`
   }
 
   &>option {
-    background-color: var(--primaryColor);
+    background-color: ${ props => props?.$colors?.primary || 'var(--white)' };
     cursor: pointer;
   }
 
   &>option:checked {
-    background-color: var(--secondaryColor);
-    color: var(--primaryColor);
+    background-color: ${ props => props?.$colors?.secondary || 'var(--white)' };
+    color:  ${ props => props?.$colors?.primary || 'var(--black)' };
     cursor: pointer;
   }
 `;
 
-function onChangeHandler(e, data, callback) {
+function onChangeHandler(e, options, callback) {
   const { selectedIndex } = e.target;
-  return callback(data[selectedIndex]);
+  return callback(options[selectedIndex]);
 }
 
 function Select(props) {
-  const { selectedKey, defaultMessage, data, onChangeHandler: callback } = props;
+  const { selectedKey, defaultMessage, data, onChangeHandler: callback, colors } = props;
+  const options = [...data];
+  if (!selectedKey) {
+    options.unshift({ key: '', value: defaultMessage });
+  }
+
+  console.log('options', options)
 
   return (
     <StyledSelect
       defaultValue={ selectedKey && selectedKey.key || selectedKey }
-      onChange={ (e) => onChangeHandler(e, data, callback) }
+      onChange={ (e) => onChangeHandler(e, options, callback) }
+      $colors={ colors }
     >
-      {/* { !selectedKey && <option value=''>{ defaultMessage }</option> } */}
-      { data.map((opt) =>
+      { options.map((opt) =>
         <option key={ opt.key } value={ opt.key }>
           { opt.value }
         </option>)

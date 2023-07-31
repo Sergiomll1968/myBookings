@@ -69,14 +69,16 @@ function Booking() {
       <Form>
         <Form.Group>
           <Form.Label>Tipo de servicio:</Form.Label>
-          <Select data={services.map((serv) => {
-            return { key: serv._id, value: serv.name }
-          })}
-            // defaultMessage='prueba01'
+          <Select
+            data={services.map((serv) => {
+              return { key: serv._id, value: serv.name }
+            })}
+            // defaultMessage='Seleccione una servicio'
+            selectedKey={{key: '64b589e475d6d25a28767ef5'}} // Jona2
             onChangeHandler={(serv) => {
-              
-
-            }}></Select>
+              console.log(serv)
+              setSelectedService(serv.key)
+            }}/>
           {/* <Form.Control as="select" value={selectedService} onChange={(e) => handleServiceChange(e)}>
             {services.map(service => (
               <option key={service.id} value={service.id}>{service.name}</option>
