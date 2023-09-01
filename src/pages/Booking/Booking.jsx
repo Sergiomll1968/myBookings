@@ -15,7 +15,7 @@ function Booking() {
   const { user } = useContext(UserContext);
   const { env } = useContext(EnvContext);
  
-  const servicesHook = useGetData();
+  const servicesHook = useGetData([]);
   const bookingsHook = useGetData();
 
   const [services, setServices] = useState([]);
@@ -97,6 +97,7 @@ function Booking() {
   };
 
   return (
+    <>
     <div style={{ backgroundColor: '#90E0EF', maxWidth: '1440px', minHeight: '1024px', margin: '0 auto', padding: '20px' }}>
       <h1>Booking</h1>
       <Form>
@@ -120,6 +121,7 @@ function Booking() {
         <Button onClick={handleCreateBooking}>Crear cita</Button>
       </Form>
     </div>
+    </>
   );
 }
 

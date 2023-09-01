@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export function useGetData() {
-  const [data, setData] = useState();
+export function useGetData(defaultValue) {
+  const [data, setData] = useState(defaultValue);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
