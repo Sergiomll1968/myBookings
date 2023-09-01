@@ -13,7 +13,8 @@ export function UserProvider({ children }) {
   });
 
   function setUserProfile(user) {
-    setUser(user);
+    setUser({...user});
+    // localStorage.setItem('user', JSON.stringify(user));
   }
 
   return (

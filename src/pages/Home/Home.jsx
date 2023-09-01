@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../../components/Logo/Logo.js';
 import Input from '../../components/Input/Input.js';
@@ -16,15 +17,19 @@ import './Home.css';
 function Home() {
   const { user, setUserProfile } = useContext(UserContext);
   const { env } = useContext(EnvContext);
- 
+
   const { getData, data, error, loading } = useGetData();
 
   const [showRegister, setShowRegister] = useState(false);
   const [register, setRegister] = useState(false);
   const [button, setButton] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    setUserProfile({ ...user, token: data?.token });
+    setUserProfile({ ...user, ...data });
+    if (data) {
+      navigate('/profile');
+    }
   }, [data]);
 
   useEffect(() => {
@@ -36,6 +41,7 @@ function Home() {
       setRegister(false);
     }, 5000);
   }, [register]);
+
 
   function changeUsername(e) {
     setUserProfile({ ...user, username: e.target.value });
@@ -50,9 +56,8 @@ function Home() {
   }
 
   async function onClickHandler(e) {
-    let userDataAndToken;
     try {
-      userDataAndToken = await getData({
+      await getData({
         // route: `https://apihairs-7342.onrender.com/${e.target.value}`,
         route: `${env.HOST}${e.target.value}`,
         method: 'POST',
@@ -69,11 +74,15 @@ function Home() {
     (error) {
       return;
     }
-    setUserProfile({ ...user, userDataAndToken });
+
+    // setUserProfile({ ...user, data });
+
     setButton(e.target.value);
-    if (!userDataAndToken) {
+    if (!data) {
       setRegister(true);
     }
+
+    return;
   }
 
   return (
@@ -147,9 +156,10 @@ function Home() {
         <br></br>
         <br></br>
       </div>
-      {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
+      {/* {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
       {data && <h2> data --- {JSON.stringify(data)} </h2>}
-      {loading && <h2> loading...</h2>}
+      {user && <h2> user --- {JSON.stringify(user)} </h2>}
+      {loading && <h2> loading...</h2>} */}
     </>
   );
 
