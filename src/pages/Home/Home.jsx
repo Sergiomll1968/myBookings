@@ -28,7 +28,9 @@ function Home() {
   useEffect(() => {
     setUserProfile({ ...user, ...data });
     if (data) {
-      navigate('/profile');
+      if (data.status != '401' || data.status != '500') {
+        navigate('/profile');
+      }
     }
   }, [data]);
 
@@ -58,7 +60,6 @@ function Home() {
   async function onClickHandler(e) {
     try {
       await getData({
-        // route: `https://apihairs-7342.onrender.com/${e.target.value}`,
         route: `${env.HOST}${e.target.value}`,
         method: 'POST',
         mode: 'cors',
@@ -75,7 +76,7 @@ function Home() {
       return;
     }
 
-    // setUserProfile({ ...user, data });
+    setUserProfile({ ...user, data, error });
 
     setButton(e.target.value);
     if (!data) {
@@ -143,7 +144,8 @@ function Home() {
                       <div className='inputs'>
                         { }
                         {button === 'login' || data.message ?
-                          <div className='labelRegister'>{data.message}</div> :
+                          <div className='labelRegister'>{data.message}</div>
+                          :
                           <div className='labelRegister'>Please, we&apos;ve sent you an email to confirm your account</div>}
                       </div>
                     </div>
@@ -156,10 +158,10 @@ function Home() {
         <br></br>
         <br></br>
       </div>
-      {/* {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
+      {error && <h2> error -- {JSON.stringify(error.statusText)} </h2>}
       {data && <h2> data --- {JSON.stringify(data)} </h2>}
       {user && <h2> user --- {JSON.stringify(user)} </h2>}
-      {loading && <h2> loading...</h2>} */}
+      {loading && <h2> loading...</h2>}
     </>
   );
 

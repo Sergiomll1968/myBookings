@@ -1,12 +1,12 @@
-// import { useContext } from 'react';
+import { useContext } from 'react';
 
 import Logo from '../../components/Logo/Logo.js';
 import Button from '../../components/Button/Button.js';
 import LayerBlack from '../../components/LayerBlack/LayerBlack.js';
 
-// import { UserContext } from '../../contexts/UserContext.jsx';
-// import { EnvContext } from '../../contexts/EnvContext.jsx';
-// import { useGetData } from '../../hooks/useGetData.js';
+import { UserContext } from '../../contexts/UserContext.jsx';
+import { EnvContext } from '../../contexts/EnvContext.jsx';
+import { useGetData } from '../../hooks/useGetData.js';
 
 // const { user, setUserProfile } = useContext(UserContext);
 
@@ -15,15 +15,15 @@ import LayerBlack from '../../components/LayerBlack/LayerBlack.js';
 import './Profile.css';
 
 function Profile() {
-  const usuario = JSON.parse(localStorage.getItem('user'));
-  // const { user, setUserProfile } = useContext(UserContext);
-  // const { env } = useContext(EnvContext);
-  // const { getData, data, error, loading } = useGetData();
+  // const usuario = JSON.parse(localStorage.getItem('user'));
+  const { user, setUserProfile } = useContext(UserContext);
+  const { env } = useContext(EnvContext);
+  const { getData, data, error, loading } = useGetData();
 
   return (
     <>
       <div className='home'>
-        <LayerBlack height='188px' borderRadius='0px' style={{ width: '100%' }} className="col-12 col-md-12 d-flex justify-content-center p-3">
+        <LayerBlack height='188px' $borderradius='0px' style={{ width: '100%' }} className="col-12 col-md-12 d-flex justify-content-center p-3">
           <Logo>
             <img className='logoProfile' alt="Logo" src='/Logo.png' />
           </Logo>
@@ -35,9 +35,9 @@ function Profile() {
           <LayerBlack height='188px' className="col-12 col-md-10 d-flex justify-content-center p-3">
             <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
               <div>
-                <h2 className='username'> Username: {usuario.username} </h2>
-                <h2 className='username'> Password: {usuario.password} </h2>
-                <h2 className='username'> Email: {usuario.mail} </h2>
+                <h2 className='username'> Username: {user.username} </h2>
+                <h2 className='username'> Points: {user.points} </h2>
+                <h2 className='username'> Email: {user.mail} </h2>
                 <h2 className='username'> Telephone: 123 456 789 </h2>
               </div>
               <img src="/myperfil.png" alt="Image" className="grid-image" />
