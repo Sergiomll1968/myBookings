@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const UserContext = createContext();
 
@@ -24,11 +24,11 @@ export function UserProvider({ children }) {
   );
 }
 
-// export function useUserContext() {
-//   const context = useContext(UserContext);
-//   if (!context) {
-//     throw new Error('useClicksContext must be used within a ClicksContextProvider');
-//   }
+export function useUserContext() {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useClicksContext must be used within a ClicksContextProvider');
+  }
 
-//   return context;
-// }
+  return context;
+}

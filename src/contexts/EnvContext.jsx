@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 const environmentVariables = {
   HOST : 'https://apihairs-7342.onrender.com/'
@@ -17,11 +17,11 @@ export function EnvProvider({ children }) {
   );
 }
 
-// export function useUserContext() {
-//   const context = useContext(UserContext);
-//   if (!context) {
-//     throw new Error('useClicksContext must be used within a ClicksContextProvider');
-//   }
+export function useEnvContext() {
+  const context = useContext(EnvContext);
+  if (!context) {
+    throw new Error('useClicksContext must be used within a ClicksContextProvider');
+  }
 
-//   return context;
-// }
+  return context;
+}

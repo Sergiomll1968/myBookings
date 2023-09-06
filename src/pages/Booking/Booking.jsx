@@ -12,8 +12,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Booking() {
   
-  const { user } = useContext(UserContext);
-  const { env } = useContext(EnvContext);
+  const { user } = useContext(UserContext); // sería usar useContext(useUserContext) ?
+  const { env } = useContext(EnvContext); // sería usar useContext(useEnvrContext) ?
  
   const servicesHook = useGetData([]);
   const bookingsHook = useGetData();
