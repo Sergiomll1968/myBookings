@@ -28,7 +28,8 @@ function Home() {
   useEffect(() => {
     setUserProfile({ ...user, ...data });
     if (data) {
-      if (data.status != '401' || data.status != '500') {
+      console.log(data.status);
+      if (data.status != 401 && data.status != 500) {
         navigate('/profile');
       }
     }
